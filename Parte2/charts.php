@@ -131,9 +131,33 @@ if (isset($_GET['sair'])) {
         <li class="breadcrumb-item">
           <a href="#">Upload</a>
         </li>
-        <li class="breadcrumb-item active"></li>
+        <li class="breadcrumb-item active">Coloque seus arquivos compactados em .rar ou .zip</li>
       </ol>
+      <div class="container">
+    
       
+      
+          <form action="php/charts.php" enctype="multipart/form-data" method="post">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nome do Arquivo</label>
+            <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Nome" name='nome' required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Classificação Indicativa</label>
+            <input class="form-control" id="exampleInputPassword1" type="number" placeholder="Idade Permitida" name='class' required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Categoria</label>
+            <input class="form-control" id="exampleInputPassword1" type="text" placeholder="Filme, Documento, Imagem, Música" name='cat' required>
+          </div>
+          
+            <label for="exampleInputPassword1">Selecionar Arquivo</label>
+            <input class="form-control" id="exampleInputPassword1" type="file" name='file' required>
+          
+             
+              <input type="submit" value="Cadastrar Arquivo" class="btn btn-primary btn-block">
+
+              </form>
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
