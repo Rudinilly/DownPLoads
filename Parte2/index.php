@@ -20,13 +20,14 @@ if (isset($_SESSION['usuario'])) {
         
         //dados do usuario
         while ($u = mysqli_fetch_assoc($query)){
+           $user = $u['Email_usu'];          
+            //downloads permitidos
+            if($user == $logado){
             $data  = $u['Data_nasc'];
             $Id_usu = $u['Id_usu'];
             $permite = $u['Idade_usu'];
-            $name = $u['Nome_usu'];
-            $user = $u['Email_usu'];
-            //downloads permitidos
-            if($user == $logado){
+            $name = $u['Nome_usu'];            
+            $senha = $u['Senha_usu'];    
             while ($a = mysqli_fetch_assoc($queryarq)){
                 if($a['Clas_indicativa']<=$permite){
                    $p++;             
@@ -225,7 +226,19 @@ if (isset($_GET['sair'])) {
             </div>             
           </div>
         </div>
-
+           <div class="container">
+               <label>Nome Completo </label>
+               <input value="<?php echo $name; ?>" type="text"class="form-control col-md-5" disabled></input>
+               <label>Email </label>
+               <input value="<?php echo $logado;?>" type="text"class="form-control col-md-5" disabled></input>
+                 <label>Senha </label>
+               <input value="<?php echo $senha;?>" type="text"class="form-control col-md-2" disabled></input>
+               <label>Idade</label>
+               <input value="<?php echo $idade;?>" type="text"class="form-control col-md-1" disabled></input>
+               <label>Data De Nascimento </label>
+               <input value="<?php echo $data;?>" type="text"class="form-control col-md-2" disabled></input>
+           </div>
+            
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
