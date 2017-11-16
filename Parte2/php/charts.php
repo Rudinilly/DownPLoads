@@ -49,7 +49,7 @@ if ($ext == '.rar' || $ext == '.zip') {
                         $query = mysqli_query($con, $sql);                        
                     
                 }else{
-                    echo "<script>alert('Erro ao cadastrar arquivo')</script>";
+                    echo "<script>alert('Erro ao cadastrar arquivo!')</script>";
                     echo "<meta http-equiv='refresh' content='0; url=../charts.php' />";
                     }
           
