@@ -1,4 +1,5 @@
 <?php
+require 'conexao.php';
 session_start();
 if (isset($_SESSION['usuario'])) {
 	$logado = $_SESSION['usuario'];
@@ -9,6 +10,15 @@ if (isset($_GET['sair'])) {
 	unset($_SESSION['usuario']);
 	header("location:login.html");
 }
+$sql="SELECT*FROM usuarios";
+$query= mysqli_query($con, $sql);
+while ($u= mysqli_fetch_assoc($query)){
+    $usu=$u['Email_usu'];
+    if ($logado==$usu){
+        $idade=$u['Idade_usu'];
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,33 +153,44 @@ if (isset($_GET['sair'])) {
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Baixar</th>
+                  <th>Nome</th>
+                  <th>Tamanho</th>
+                  <th>N° Downloads</th>
+                  <th>Clas_indicativa</th>
+                  <th>Categoria</th>                  
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Baixar</th>
+                  <th>Nome</th>
+                  <th>Tamanho</th>
+                  <th>N° Downloads</th>
+                  <th>Clas_indicativa</th>
+                  <th>Categoria</th>     
                 </tr>
               </tfoot>
-              <tbody>
-                <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                </tr>  
+              <tbody>              
+                <?php
+                $sqla="SELECT*FROM arquivos";
+                $querya= mysqli_query($con, $sqla);
+                while ($a= mysqli_fetch_assoc($querya)){
+                    if ($idade<=$a['Clas_indicativa']){
+                        echo "<tr>";
+                        echo "<td> <a class='nav-link' href='arquivos/".$a['Nome_arq']."' download>
+            <i class='fa fa-fw  fa-download'></i>
+            <span class='nav-link-text'>Download</span>
+          </a></td>";
+                        echo "<td>".$a['Nome_arq']."</td>";
+                        echo "<td>".$a['Tamanho_arq']."</td>";
+                        echo "<td>".$a['N_Downloads']."</td>";
+                        echo "<td>".$a['Clas_indicativa']."</td>";
+                        echo "<td>".$a['Categoria']."</td>";
+                        echo"</tr>";
+                    }
+                } 
+                ?>
               </tbody>
             </table>
           </div>
