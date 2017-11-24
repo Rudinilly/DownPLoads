@@ -33,7 +33,7 @@ $tam = ceil($tam / 1024);
 if($tam >1024){
     $tam = ceil($tam/1024)."Mb";  
 }else{
-    $tam = ceil($tam / 1024)."Kb";
+    $tam = ceil($tam)."Kb";
 }
 $n = 0;
 
@@ -46,7 +46,8 @@ if ($ext == '.rar' || $ext == '.zip') {
              if ($query) {
                         echo "<script>alert('Arquivo Cadastrado com Sucesso')</script>";                        
                         $sql = "INSERT INTO uploads (Id_usu, Nome_arq, Hora_up, Data_up) VALUES ('".$id."', '".$nome."', '".$hora."' , '".$data."' )";
-                        $query = mysqli_query($con, $sql);                        
+                        $query = mysqli_query($con, $sql);    
+                         echo "<meta http-equiv='refresh' content='0; url=../charts.php' />";
                     
                 }else{
                     echo "<script>alert('Erro ao cadastrar arquivo!')</script>";

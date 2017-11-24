@@ -29,6 +29,8 @@ while ($u = mysqli_fetch_assoc($query)){
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+
+    
   <title>Download</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -155,17 +157,17 @@ while ($u = mysqli_fetch_assoc($query)){
                 <tr>
                   <th>Baixar</th>
                   <th>Nome</th>
-                  <th>N° Donloads</th>
+                  <th>N° Downloads</th>
                   <th>Tamanho</th>
                   <th>Clas_indicativa</th>
                   <th>Categoria</th>
                 </tr>
               </thead>
               <tfoot>
-                <tr>
+                  <tr>
                   <th>Baixar</th>
                   <th>Nome</th>
-                  <th>N° Donloads</th>
+                  <th>N° Downloads</th>
                   <th>Tamanho</th>
                   <th>Clas_indicativa</th>
                   <th>Categoria</th>
@@ -178,7 +180,12 @@ while ($u = mysqli_fetch_assoc($query)){
                 while($a = mysqli_fetch_assoc($querya)){
                     if($idade>=$a['Clas_indicativa']){
                         echo "<tr>";
-                        echo "<td><a class='nav-link' href='arquivos/".$a['Nome_arq']."' download><i class='fa fa-fw  fa-download'></i><span class='nav-link-text'>Download</span></a></td>";
+                        echo "<td><form method='post' action='php/downloads.php'><input type='hidden' value='".$a['Id_arq']."' name='id'>"
+                                . "<input type='hidden' value='".$a['Nome_arq']."' name='nome'>"                        .         
+                                "<button class='btn btn-primary'>"
+                                . "<i class='fa fa-fw  fa-download'>"
+                                . "</i><span class='nav-link-text'>Download</span>"
+                                . "</button></form></td>";
                         echo "<td>".$a['Nome_arq']."</td>";
                         echo "<td>".$a['N_Downloads']."</td>";
                         echo "<td>".$a['Tamanho_arq']."</td>";
@@ -238,6 +245,7 @@ while ($u = mysqli_fetch_assoc($query)){
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
+   
   </div>
 </body>
 

@@ -41,7 +41,7 @@ if (isset($_SESSION['usuario'])) {
             }
             //downloads feitos
             while($d = mysqli_fetch_assoc($querydow)){
-                if($name == $d['Nome_usu']){
+                if($logado == $d['Email_usu']){
                     $downloads++;
                 }
             }
