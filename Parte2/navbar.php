@@ -62,7 +62,10 @@ if (isset($_GET['sair'])) {
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.php">Conta</a>
+              <a href="navbar.php"> 
+                conta
+                
+              </a>
             </li>
             <li>
               <a href="cards.php">Arquivos</a>
@@ -135,7 +138,64 @@ if (isset($_GET['sair'])) {
       </ol>
       <h1>Minha Conta</h1>
       <hr>
-      
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+            <?php
+require 'conexao.php';
+    $us = $_SESSION['usuario'];
+    $sql = "SELECT * FROM usuarios WHERE Email_usu  ='".$us."'";
+    $query = mysqli_query($con, $sql);
+
+
+    while($dados = mysqli_fetch_assoc($query)){
+      $id = $dados['Id_usu'];
+      $nome = $dados['Nome_usu'];
+      $senha = $dados['Senha_usu'];
+      $email = $dados['Email_usu'];
+      $data_nasc = $dados['Data_nasc'];
+      $idade = $dados['Idade_usu'];
+    } 
+           ?>
+           <form method="post" action="php/atualiza_usu.php">
+           <div class="form-group col-md-5">
+            <label>Nome</label>
+            <input type="hidden" value="<?php echo $id?>" name='id'>
+            <input class="form-control" type="text" value="<?php echo $nome;?>" name="nome" required>
+          </div>
+           <div class="form-group col-md-5">
+            <label>Email</label>
+            <input class="form-control" type="text" value="<?php echo $email;?>" name="email" required>
+          </div>
+           <div class="form-group col-md-3">
+            <label>Senha</label>
+            <input class="form-control" type="password" value="<?php echo $senha;?>" name='pass' required>
+          </div>
+           <div class="form-group col-md-2">
+            <label>Data Nascimento</label>
+            <input class="form-control" type="text" value="<?php echo $data_nasc;?>" name='data' required>
+          </div>
+           <div class="form-group col-md-1">
+            <label>Idade</label>
+            <input class="form-control" type="text" value="<?php echo $idade;?>" disabled name='idade' required>
+          </div>
+          <div class="row" >
+          <div class="col-md-2">   
+              <input type="hidden" value="<?php echo $id?>" name='id'>
+              <input type="submit" value="Atualizar" class="btn btn-success btn-block">
+          </div>
+          </form>
+          <form action="php/excluir_usu.php" method="post">
+            <input type="hidden" value="<?php echo $id?>" name='id'>
+            <div>
+             <input type="submit" value="Excluir" class="btn btn-danger btn-block">
+            </div>
+          </form>
+          </div>
+          </div>
+        </div>
+      </div>
      
     <footer class="sticky-footer">
       <div class="container">
