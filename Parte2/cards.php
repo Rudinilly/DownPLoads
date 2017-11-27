@@ -129,13 +129,73 @@ if (isset($_GET['sair'])) {
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">Gerenciar</a>
-        </li>
+          </li>
         <li class="breadcrumb-item active">Arquivos</li>
       </ol>
-      <h1>Meus Arquivos</h1>
-      <hr>
+      <h1>Meus Arquivos
+      </h1>
       
-    <footer class="sticky-footer">
+      <div class='card mb-3'>
+          <div class='table-responsive'>
+            <table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Categoria</th>
+                  <th>Tamanho</th>
+                  <th>Ação</th>
+                  
+                </tr>
+              </thead>
+              <tfoot>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Tamanho</th>
+                <th>Ação</th>
+              </tfoot>
+              <tbody>
+<?php
+        require("conexao.php");
+        $sqlu = "SELECT * FROM usuarios";
+        $queryu = mysqli_query($con , $sqlu);
+        $sqla = "SELECT * FROM arquivos";
+        $querya= mysqli_query($con, $sqla);
+
+while ($u =mysqli_fetch_assoc($queryu)) {
+  $id = $u['Id_usu'];
+  $usu=$u['Email_usu'];
+  if ($logado == $usu) {
+    $id_usu = $id;
+  }
+}
+  while ($a = mysqli_fetch_assoc($querya)) {
+    if ($a['Id_usu']==$id_usu) {
+      echo "<tr>";
+            echo "
+            <td>".$a['Nome_arq']."</td>
+            <td>".$a['Categoria']."</td>
+            <td>".$a['Tamanho_arq']."</td>
+            <td><a class = 'btn btn-warning' href = 'php/Editararq.php?id=".$a['Id_arq']."'>Editar</a>
+            <a class = 'btn btn-danger' href = 'php/Removerarq.php?id=".$a['Id_arq']."'>Remover</a></td>
+
+            ";
+      echo "</tr>";
+
+    }
+
+  }
+  ?>
+
+                 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+      <hr>
+
+    <footer class="sticky-footer ">
       <div class="container">
         <div class="text-center">
           <small>Copyright © DownPLoads 2017</small>
@@ -164,14 +224,19 @@ if (isset($_GET['sair'])) {
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript-->
+     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-  </div>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-datatables.min.js"></script>
+  
   
 </body>
 
