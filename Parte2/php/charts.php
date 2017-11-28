@@ -37,7 +37,7 @@ if($tam >1024){
 }
 $n = 0;
 
-if ($ext == '.rar' || $ext == '.zip') {
+if ($ext == '.zip') {
 	if (move_uploaded_file($_FILES['file']['tmp_name'], $dir.$nome)) {		
             
             $sql = "INSERT INTO arquivos (Nome_arq, Tamanho_arq, N_Downloads, Id_usu, Clas_indicativa, Categoria) VALUES ('".$nome."', '".$tam."', '".$n."' , '".$id."' , '".$class."' , '".$cat."')";
@@ -60,7 +60,7 @@ if ($ext == '.rar' || $ext == '.zip') {
 	}
 
 }else{
-echo "<script>alert('Aceitamos apenas os formatos: zip, rar')</script>";
+echo "<script>alert('Aceitamos apenas o formato: zip')</script>";
 echo "<meta http-equiv='refresh' content='0; url=../charts.php' />";
 }
 ?>

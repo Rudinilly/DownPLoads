@@ -29,10 +29,10 @@ $query = mysqli_query($con, $sql);
 if($senha  == $confirm){    
     $sql = "INSERT INTO usuarios (Nome_usu, Email_usu, Senha_usu, Idade_usu, Data_nasc) VALUES ('".$nome."', '".$email."', '".$senha."', '".$idade."', '".$data."')";
     $query = mysqli_query($con,$sql);
-
-     echo "<meta http-equiv='refresh' content='0; url=../register.html' />";
+    echo '<script>alert("Usuário cadastrado com sucesso!")</script>';
+     echo "<meta http-equiv='refresh' content='0; url=../login.html' />";
 }else{
-    echo '<script>alert("Erro: Ou o email já está cadastrado ou a senha está errada")</script>';
+    echo '<script>alert("Erro: Ou o email já está cadastrado ou a senha está errada!")</script>';
     echo "<meta http-equiv='refresh' content='0; url=../register.html' />";
 }
 ?>

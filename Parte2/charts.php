@@ -131,7 +131,7 @@ if (isset($_GET['sair'])) {
         <li class="breadcrumb-item">
           <a href="#">Upload</a>
         </li>
-        <li class="breadcrumb-item active">Coloque seus arquivos compactados em .rar ou .zip</li>
+        <li class="breadcrumb-item active">Coloque seus arquivos compactados em .zip</li>
       </ol>
       <div class="container">
     
