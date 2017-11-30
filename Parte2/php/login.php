@@ -1,6 +1,5 @@
-<meta charset="utf-8">
 <?php
-$user = $_POST['user'];
+$user = strtolower($_POST['user']);
 $pass = $_POST['pass'];
 
 require '../conexao.php';
@@ -16,8 +15,8 @@ if(mysqli_num_rows($query) > 0) {
 	header('location:../index.php');
 }
 else{
-	unset($_SESSION['usuario']);
-	header('location:../login.html');
+    echo '<script>alert("Usuário ou senha incorretos!")</script>';
+    echo "<meta http-equiv='refresh' content='0; url=../login.html' />";
 }
 ?>
 

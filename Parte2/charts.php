@@ -137,7 +137,7 @@ if (isset($_GET['sair'])) {
     
       
       
-          <form action="php/charts.php" enctype="multipart/form-data" method="post">
+          <form action="php/charts.php" id="formUpload" enctype="multipart/form-data" method="post">
           <div class="form-group">
             <label for="exampleInputEmail1">Nome do Arquivo</label>
             <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Nome" name='nome' required>
@@ -155,9 +155,10 @@ if (isset($_GET['sair'])) {
             <input class="form-control" id="exampleInputPassword1" type="file" name='file' required>
           
              
-              <input type="submit" value="Cadastrar Arquivo" class="btn btn-primary btn-block">
+            <input id="btnEnviar" type="submit" value="Cadastrar Arquivo" class="btn btn-primary btn-block">
 
               </form>
+          <br>  
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">

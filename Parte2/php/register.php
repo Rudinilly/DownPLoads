@@ -3,7 +3,7 @@ require '../conexao.php';
 
 $nome = $_POST['nome'];
 $data = $_POST['data'];
-$email = $_POST['email'];
+$email = strtolower($_POST['email']);
 $senha = $_POST['senha'];
 $confirm = $_POST['confirm'];
 
