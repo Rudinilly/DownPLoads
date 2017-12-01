@@ -1,0 +1,13 @@
+{
+    "name": "dpl/dpl",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Artur nunes",
+            "email": "artur_nunes_03@hotmail.com"
+        }
+    ],
+    "require": {
+        "sendgrid/sendgrid": "^6.0"
+    }
+}
