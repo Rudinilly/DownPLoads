@@ -217,7 +217,7 @@ if (isset($_GET['sair'])) {
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-download"></i>
               </div>
-              <div class="mr-5"><?php echo $p;?> Download(s) Possível(is)</div>
+              <div class="mr-5"><?php echo $p;?> Arquivo(s) Disponível(is)</div>
             </div>              
           </div>
         </div>
@@ -243,13 +243,14 @@ if (isset($_GET['sair'])) {
             </div>             
           </div>
         </div>
-           <div class="container">
+           <div class="container-fluid">
                <label>Nome Completo </label>
                <input value="<?php echo $name; ?>" type="text"class="form-control col-md-5" disabled></input>
                <label>Email </label>
                <input value="<?php echo $logado;?>" type="text"class="form-control col-md-5" disabled></input>
                  <label>Senha </label>
-               <input value="<?php echo $senha;?>" type="text"class="form-control col-md-2" disabled></input>
+                 <input id="senha" value="<?php echo $senha;?>" type="password"class="form-control col-md-2" disabled></input>
+                 <input id="chek" onclick="if(document.getElementById('chek').checked){document.getElementById('senha').type = 'text';}else{ document.getElementById('senha').type = 'password';}" type="checkbox">Mostrar Senha</input><br>
                <label>Idade</label>
                <input value="<?php echo $idade;?>" type="text"class="form-control col-md-1" disabled></input>
                <label>Data De Nascimento </label>
@@ -299,6 +300,11 @@ if (isset($_GET['sair'])) {
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
+    <script>
+    if(document.getElementById('chek').checked){
+        document.getElementById('senha').type = 'password';
+    }
+    </script>
   </div>
 </body>
 

@@ -138,7 +138,7 @@ if (isset($_GET['sair'])) {
       </ol>
       <h1>Minha Conta</h1>
       <hr>
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
 
@@ -179,8 +179,7 @@ require 'conexao.php';
            <div class="form-group col-md-1">
             <label>Idade</label>
             <input class="form-control" type="text" value="<?php echo $idade;?>" disabled name='idade' required>
-          </div>
-          <div class="row" >
+          </div>          
           <div class="col-md-2">   
               <input type="hidden" value="<?php echo $id?>" name='id'>
               <input type="submit" value="Atualizar" class="btn btn-success btn-block">
@@ -188,11 +187,10 @@ require 'conexao.php';
           </form>
           <form action="php/excluir_usu.php" method="post">
             <input type="hidden" value="<?php echo $id?>" name='id'>
-            <div>
+            <div class="col-md-2" >
              <input type="submit" value="Excluir" class="btn btn-danger btn-block">
             </div>
-          </form>
-          </div>
+          </form>          
           </div>
         </div>
       </div>

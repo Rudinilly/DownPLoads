@@ -12,8 +12,13 @@ if (isset($_GET['sair'])) {
 ?>
 <?php
 require('../conexao.php');
-
 $id=$_GET['id'];
+$sqli = "SELECT Nome_arq FROM arquivos WHERE Id_arq = '$id'";
+$queryi = mysqli_query($con, $sqli);
+while ($d = Mysqli_fetch_assoc($queryi)) {
+	$nome = $d['Nome_arq'];
+}
+unlink("../arquivos/$nome");
 $sql="DELETE FROM arquivos WHERE Id_arq='$id'";
 $query = mysqli_query($con, $sql);
 

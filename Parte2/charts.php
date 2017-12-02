@@ -133,7 +133,7 @@ if (isset($_GET['sair'])) {
         </li>
         <li class="breadcrumb-item active">Coloque seus arquivos compactados em .zip</li>
       </ol>
-      <div class="container">
+      <div class="container-fluid">
     
       
       
@@ -150,9 +150,8 @@ if (isset($_GET['sair'])) {
             <label for="exampleInputPassword1">Categoria</label>
             <input class="form-control" id="exampleInputPassword1" type="text" placeholder="Filme, Documento, Imagem, Música" name='cat' required>
           </div>
-          
-            <label for="exampleInputPassword1">Selecionar Arquivo</label>
-            <input class="form-control" id="exampleInputPassword1" type="file" name='file' required>
+              <label for="arquivo" style="cursor: pointer;"><img width="50" src="upload.jpg"></label>
+            <input style="display: none;" class="form-control" id="arquivo" type="file" name='file' required>
           
              
             <input id="btnEnviar" type="submit" value="Cadastrar Arquivo" class="btn btn-primary btn-block">
